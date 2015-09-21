@@ -6,11 +6,22 @@ import (
 )
 
 
-func convertToMorse(strInput string) string{
+type morseCode struct {
+	code string
+	text string
+}
+
+func convertToMorseByString(strInput string) string{
 
 	if strInput != "" {
 		return "morse code"
 	}
+
+	return "mistake input string"
+}
+
+func convertToStringByMorse(strInput string) string{
+
 
 	return "mistake input string"
 }
@@ -23,6 +34,6 @@ func main() {
 
 	strInput := os.Args[1]
 
-	fmt.Println(convertToMorse(strInput))
+	fmt.Println(convertToMorseByString(strInput))
 
 }
