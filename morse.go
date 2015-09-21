@@ -13,6 +13,7 @@ type morseCode struct {
 
 func convertToMorseByString(strInput string) string{
 
+	// Alphabet to Morse Code
 	if strInput != "" {
 		return "morse code"
 	}
@@ -21,7 +22,7 @@ func convertToMorseByString(strInput string) string{
 }
 
 func convertToStringByMorse(strInput string) string{
-
+	// Morse Code to String
 
 	return "mistake input string"
 }
