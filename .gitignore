@@ -29,3 +29,4 @@ _testmain.go
 *.iml
 
 *.back
+test.json

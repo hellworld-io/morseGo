@@ -10,7 +10,7 @@ import (
 
 func TestParseToJsonData(t *testing.T){
 
-	file, err := ioutil.ReadFile("./test.json")
+	file, err := ioutil.ReadFile("./morseData.json")
 
 	if err != nil {
 		log.Fatal(err)
