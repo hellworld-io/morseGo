@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"encoding/json"
+	"fmt"
 )
 
 func TestParseToJsonData(t *testing.T){
@@ -20,6 +21,10 @@ func TestParseToJsonData(t *testing.T){
 		log.Fatal(err)
 	}
 
-	log.Println(morseData)
+	fmt.Println(morseData)
+
+}
+
+func TestConvertToMorseCodeByJsonData(t *testing.T){
 
 }
