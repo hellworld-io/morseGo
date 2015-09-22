@@ -36,11 +36,13 @@ func main() {
 		log.Fatal(err)
 	}
 
+	//[TODO] before args check, and search morse code by json
 	var outputString string
 
 	for _, argument := range flag.Args() {
 		outputString += argument + " "
 	}
+	//[TODO] before args check, and search morse code by json
 
 	fmt.Println(outputString)
 
