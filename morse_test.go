@@ -28,3 +28,7 @@ func TestParseToJsonData(t *testing.T){
 func TestConvertToMorseCodeByJsonData(t *testing.T){
 
 }
+
+func TestConvertToWordsByJsonData(t *testing.T){
+
+}
