@@ -48,6 +48,4 @@ func main() {
 	}
 
 	fmt.Println(outMorse)
-	fmt.Println(outputString)
-
 }
