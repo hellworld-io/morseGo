@@ -11,19 +11,7 @@ import (
 var morseData map[string]interface{}
 
 func main() {
-	//code := flag.String("code", "", "input your morse code")
-	//word := flag.String("word", "", "input your words")
-	//var word []string
-	//word = flag.Args()
-
 	flag.Parse()
-
-	/*
-	if flag.NFlag() == 0 {
-		flag.Usage()
-		return
-	}
-	*/
 
 	file, err := ioutil.ReadFile("./morseData.json")
 
