@@ -7,6 +7,8 @@
 ## Why?
 
 ### This is my toy project for practising golang.
+### The golang is very funny, but I am beginner in golang.
+### I would like to use well the golang more, so I need to practise the golang, and I need to help your.
 
 ## Result
 
@@ -20,3 +22,4 @@ $ go run morse.go asd asd
 - [ ] code refactoring
 - [ ] to make test code
 - [ ] to convert from morse code to words
+- [ ] to make document about using go
