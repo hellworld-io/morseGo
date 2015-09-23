@@ -36,17 +36,16 @@ func main() {
 		log.Fatal(err)
 	}
 
-	//[TODO] before args check, and search morse code by json
 	var outputString string
 	var outMorse string
-	//var idx int = 0
+
 	for _, argument := range flag.Args() {
 		outputString += argument + " "
-
-		//outMorse += morseData[outputString[idx:idx+1]].(string) + " "
-		//idx += 1
 	}
-	//[TODO] before args check, and search morse code by json
+
+	for idx := 0; idx < len(outputString); idx++ {
+		outMorse += morseData[outputString[idx:idx+1]].(string) + " "
+	}
 
 	fmt.Println(outMorse)
 	fmt.Println(outputString)
