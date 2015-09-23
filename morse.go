@@ -38,13 +38,19 @@ func main() {
 
 	//[TODO] before args check, and search morse code by json
 	var outputString string
-
+	var outMorse string
+	var idx int = 0
 	for _, argument := range flag.Args() {
+		fmt.Println(idx)
 		outputString += argument + " "
+
+		//outMorse += morseData[outputString[idx:idx+1]].(string) + " "
+		idx += 1
+		fmt.Println(idx)
 	}
 	//[TODO] before args check, and search morse code by json
 
+	fmt.Println(outMorse)
 	fmt.Println(outputString)
 
-	//fmt.Println(morseData[*word])
 }
