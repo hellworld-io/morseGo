@@ -11,9 +11,15 @@ import (
 
 var morseData map[string]interface{}
 
+var strFileName string
 
 func makeToStringByArgs(strArgs []string) string {
 	var strArgsResult string
+
+	if (len(strArgs) == 0){
+		log.Fatal("Args is null !!!")
+		os.Exit(-1)
+	}
 
 	for _, argument := range strArgs {
 		strArgsResult += argument + " "
@@ -31,8 +37,8 @@ func convertToMorseByArgs(strWord string) string{
 	return strMorseResult
 }
 
-func readJsonFile() {
-	file, err := ioutil.ReadFile("./morseData.json")
+func readJsonFile(strFileName string) {
+	file, err := ioutil.ReadFile("./" + strFileName)
 
 	if err != nil {
 		log.Fatal(err)
@@ -48,9 +54,11 @@ func readJsonFile() {
 
 func main() {
 	flag.Parse()
-
-	readJsonFile()
 	var strArgs = makeToStringByArgs(flag.Args())
+
+	strFileName = "morseData.json"
+	readJsonFile(strFileName)
+
 	var strMorse = convertToMorseByArgs(strArgs)
 
 	fmt.Println(strMorse)
