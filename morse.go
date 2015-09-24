@@ -10,6 +10,25 @@ import (
 
 var morseData map[string]interface{}
 
+func makeToStringArrayByArgs(strArgs []string) string {
+	var strArgsResult string
+
+	for _, argument := range strArgs {
+		strArgsResult += argument + " "
+	}
+	return strArgsResult
+}
+
+func convertToMorseByWord(strWord string) string{
+	var strMorseResult string
+
+	for idx := 0; idx < len(strWord); idx++ {
+		strMorseResult += morseData[strWord[idx:idx+1]].(string) + " "
+	}
+
+	return strMorseResult
+}
+
 func main() {
 	flag.Parse()
 
@@ -24,16 +43,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var outputString string
-	var outMorse string
+	var strArgs = makeToStringArrayByArgs(flag.Args())
+	var strMorse = convertToMorseByWord(strArgs)
 
-	for _, argument := range flag.Args() {
-		outputString += argument + " "
-	}
-
-	for idx := 0; idx < len(outputString); idx++ {
-		outMorse += morseData[outputString[idx:idx+1]].(string) + " "
-	}
-
-	fmt.Println(outMorse)
+	fmt.Println(strMorse)
 }
