@@ -18,8 +18,3 @@ $ go run morse.go asd asd
 .- ... -..   .- ... -..   
 
 ```
-## TODO
-- [ ] code refactoring
-- [ ] to make test code
-- [ ] to convert from morse code to words
-- [ ] to make document about using go
