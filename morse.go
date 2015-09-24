@@ -29,9 +29,7 @@ func convertToMorseByWord(strWord string) string{
 	return strMorseResult
 }
 
-func main() {
-	flag.Parse()
-
+func readJsonFile() {
 	file, err := ioutil.ReadFile("./morseData.json")
 
 	if err != nil {
@@ -42,7 +40,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
 
+func main() {
+	flag.Parse()
+
+	readJsonFile()
 	var strArgs = makeToStringArrayByArgs(flag.Args())
 	var strMorse = convertToMorseByWord(strArgs)
 
