@@ -6,11 +6,13 @@ import (
 	"encoding/json"
 	"log"
 	"flag"
+	"os"
 )
 
 var morseData map[string]interface{}
 
-func makeToStringArrayByArgs(strArgs []string) string {
+
+func makeToStringByArgs(strArgs []string) string {
 	var strArgsResult string
 
 	for _, argument := range strArgs {
@@ -19,7 +21,7 @@ func makeToStringArrayByArgs(strArgs []string) string {
 	return strArgsResult
 }
 
-func convertToMorseByWord(strWord string) string{
+func convertToMorseByArgs(strWord string) string{
 	var strMorseResult string
 
 	for idx := 0; idx < len(strWord); idx++ {
@@ -34,11 +36,13 @@ func readJsonFile() {
 
 	if err != nil {
 		log.Fatal(err)
+		os.Exit(-1)
 	}
 
 	err = json.Unmarshal(file, &morseData)
 	if err != nil {
 		log.Fatal(err)
+		os.Exit(-1)
 	}
 }
 
@@ -46,8 +50,8 @@ func main() {
 	flag.Parse()
 
 	readJsonFile()
-	var strArgs = makeToStringArrayByArgs(flag.Args())
-	var strMorse = convertToMorseByWord(strArgs)
+	var strArgs = makeToStringByArgs(flag.Args())
+	var strMorse = convertToMorseByArgs(strArgs)
 
 	fmt.Println(strMorse)
 }
