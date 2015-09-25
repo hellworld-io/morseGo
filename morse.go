@@ -31,6 +31,10 @@ func convertToMorseByArgs(strWord string) string{
 	var strMorseResult string
 
 	for idx := 0; idx < len(strWord); idx++ {
+		if(morseData[strWord[idx:idx+1]] == nil){
+			log.Fatal("There are no matching words.")
+			os.Exit(-1)
+		}
 		strMorseResult += morseData[strWord[idx:idx+1]].(string) + " "
 	}
 

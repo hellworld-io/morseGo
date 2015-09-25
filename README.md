@@ -14,7 +14,8 @@
 
 ### This is able to convert from words to morse code.
 ```
+
 $ go run morse.go asd asd
-.- ... -..   .- ... -..   
+.- ... -..   .- ... -..
 
 ```

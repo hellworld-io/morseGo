@@ -31,7 +31,7 @@ func TestParseToJsonData(t *testing.T){
 
 	//var morseStruct = new(MorseStruct)
 	//morseUSData: make(map[string]interface{})
-	var testMap map[string]interface{}
+	var testMap map[string] map[string] interface{}
 	err = json.Unmarshal(file, &testMap)
 	if err != nil {
 		log.Fatal(err)
@@ -39,7 +39,23 @@ func TestParseToJsonData(t *testing.T){
 	}
 
 	//fmt.Println(MorseStruct.MorseUS.morseUSDatas["a"])
-	fmt.Println(testMap["morseUS"])
+	//strMorseResult += morseData[strWord[idx:idx+1]].(string) + " "
+	morseUSCode := testMap["morseUS"]["d"]
+
+	if(morseUSCode == nil){
+		fmt.Println("nil")
+	}else{
+		fmt.Println(morseUSCode)
+	}
+
+
+	str := "a*"
+	fmt.Println("str ====>", str)
+
+	for _, r := range str{
+		fmt.Println(r)
+	}
+
 
 
 }
