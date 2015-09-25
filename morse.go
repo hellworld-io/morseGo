@@ -17,9 +17,9 @@ var strFileName string
 var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words")
 var bKorToMorse = flag.Bool("ktm",false, "To need Kor words")
 var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet")
-var bMorseToKor = flag.Bool("mta", false, "To need morse codes for Kor")
+var bMorseToKor = flag.Bool("mtk", false, "To need morse codes for Kor")
 
-func makeToStringByArgs(strArgs []string) string {
+func makeToStringByArgsAlphabet(strArgs []string) string {
 	var strArgsResult string
 
 	if (len(strArgs) == 0){
@@ -66,9 +66,14 @@ func readJsonFile(strFileName string) {
 func main() {
 	flag.Parse()
 
-	fmt.Println(*fMorseUS)
+	//fmt.Println(*fMorseUS)
 
-	var strArgs = makeToStringByArgs(flag.Args())
+	var strArgs string
+
+	if(*bAlphabetToMorse == true){
+		strArgs = makeToStringByArgsAlphabet(flag.Args())
+	}
+
 
 	fmt.Println(strArgs)
 
