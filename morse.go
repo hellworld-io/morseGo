@@ -7,15 +7,17 @@ import (
 	"log"
 	"flag"
 	"os"
+"strings"
 )
 
 var morseData map[string]interface{}
 
 var strFileName string
 
-var fMorseUS = flag.Bool("um", false, "To need US words")
-var fMorseKOR = flag.Bool("km",false, "To need KOR words")
-var fMorseCode = flag.Bool("mw", false, "To need morse codes")
+var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words")
+var bKorToMorse = flag.Bool("ktm",false, "To need Kor words")
+var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet")
+var bMorseToKor = flag.Bool("mta", false, "To need morse codes for Kor")
 
 func makeToStringByArgs(strArgs []string) string {
 	var strArgsResult string
@@ -28,6 +30,7 @@ func makeToStringByArgs(strArgs []string) string {
 	for _, argument := range strArgs {
 		strArgsResult += argument + " "
 	}
+	strArgsResult = strings.ToLower(strArgsResult)
 	return strArgsResult
 }
 
@@ -64,7 +67,10 @@ func main() {
 	flag.Parse()
 
 	fmt.Println(*fMorseUS)
+
 	var strArgs = makeToStringByArgs(flag.Args())
+
+	fmt.Println(strArgs)
 
 	strFileName = "morseData.json"
 	readJsonFile(strFileName)
