@@ -13,6 +13,10 @@ var morseData map[string]interface{}
 
 var strFileName string
 
+var fMorseUS = flag.Bool("um", false, "To need US words")
+var fMorseKOR = flag.Bool("km",false, "To need KOR words")
+var fMorseCode = flag.Bool("mw", false, "To need morse codes")
+
 func makeToStringByArgs(strArgs []string) string {
 	var strArgsResult string
 
@@ -58,6 +62,8 @@ func readJsonFile(strFileName string) {
 
 func main() {
 	flag.Parse()
+
+	fmt.Println(*fMorseUS)
 	var strArgs = makeToStringByArgs(flag.Args())
 
 	strFileName = "morseData.json"
