@@ -66,14 +66,11 @@ func readJsonFile(strFileName string) {
 func main() {
 	flag.Parse()
 
-	//fmt.Println(*fMorseUS)
-
 	var strArgs string
 
 	if(*bAlphabetToMorse == true){
 		strArgs = makeToStringByArgsAlphabet(flag.Args())
 	}
-
 
 	fmt.Println(strArgs)
 
