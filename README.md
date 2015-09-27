@@ -12,7 +12,7 @@
 
 ## How to use it
 
-### This is able to convert from words to morse code.
+### This is able to convert from words to morse code, or convert from morse code to words.
 ```
 
 $ go run morse.go asd asd
