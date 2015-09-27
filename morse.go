@@ -22,14 +22,7 @@ var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet
 func makeToStringByArgsAlphabet(strArgs []string) string {
 	var strArgsResult string
 
-	if (len(strArgs) == 0){
-		log.Fatal("Arguments is null !!!")
-		os.Exit(-1)
-	}
-
 	if(*bAlphabetToMorse == true){
-		fmt.Println("morse ===> ",strArgs[3])
-
 		for _, argument := range strArgs {
 			if(argument == " "){
 				fmt.Println("space")
@@ -39,15 +32,16 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 
 		strArgsResult = strings.ToLower(strArgsResult)
 	}else if(*bMorseToAlphabet == true){
-		fmt.Println("morse ===> ",strArgs)
-
-
 		for _, argument := range strArgs {
 			strArgsResult += argument + " "
 		}
-		fmt.Println("morse123 ===>",strArgsResult)
 	}else{
-		log.Fatal("Arguments error !!!")
+		log.Fatal("Arguments error !!! no flag")
+		os.Exit(-1)
+	}
+
+	if (len(strArgs) == 0){
+		log.Fatal("Arguments is null !!!")
 		os.Exit(-1)
 	}
 
