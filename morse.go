@@ -7,30 +7,51 @@ import (
 	"log"
 	"flag"
 	"os"
-"strings"
+	"strings"
 )
 
-var morseData map[string]interface{}
+var morseData map[string] interface{}
 
 var strFileName string
 
-var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words")
-var bKorToMorse = flag.Bool("ktm",false, "To need Kor words")
-var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet")
-var bMorseToKor = flag.Bool("mtk", false, "To need morse codes for Kor")
+var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words ex) -atm ab cd")
+//var bKorToMorse = flag.Bool("ktm",false, "To need Kor words")
+var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet ex) -mta . .-  . .-")
+//var bMorseToKor = flag.Bool("mtk", false, "To need morse codes for Kor")
 
 func makeToStringByArgsAlphabet(strArgs []string) string {
 	var strArgsResult string
 
 	if (len(strArgs) == 0){
-		log.Fatal("Args is null !!!")
+		log.Fatal("Arguments is null !!!")
 		os.Exit(-1)
 	}
 
-	for _, argument := range strArgs {
-		strArgsResult += argument + " "
+	if(*bAlphabetToMorse == true){
+		fmt.Println("morse ===> ",strArgs[3])
+
+		for _, argument := range strArgs {
+			if(argument == " "){
+				fmt.Println("space")
+			}
+			strArgsResult += argument + " "
+		}
+
+		strArgsResult = strings.ToLower(strArgsResult)
+	}else if(*bMorseToAlphabet == true){
+		fmt.Println("morse ===> ",strArgs)
+
+
+		for _, argument := range strArgs {
+			strArgsResult += argument + " "
+		}
+		fmt.Println("morse123 ===>",strArgsResult)
+	}else{
+		log.Fatal("Arguments error !!!")
+		os.Exit(-1)
 	}
-	strArgsResult = strings.ToLower(strArgsResult)
+
+
 	return strArgsResult
 }
 
@@ -68,11 +89,7 @@ func main() {
 
 	var strArgs string
 
-	if(*bAlphabetToMorse == true){
-		strArgs = makeToStringByArgsAlphabet(flag.Args())
-	}
-
-	fmt.Println(strArgs)
+	strArgs = makeToStringByArgsAlphabet(flag.Args())
 
 	strFileName = "morseData.json"
 	readJsonFile(strFileName)
