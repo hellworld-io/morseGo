@@ -14,8 +14,15 @@
 
 ### This is able to convert from words to morse code, or convert from morse code to words.
 ```
+./morseGo -h
+Usage of ./morseGo:
+  -atm
+        To need Alphabet words ex) -atm ab cd
+  -mta
+        To need morse codes for alphabet ex) -mta . .-  . .-
 
-$ go run morse.go asd asd
-.- ... -..   .- ... -..
+
+$ ./morseGo -atm a b
+.-   -...
 
 ```
