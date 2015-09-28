@@ -32,6 +32,7 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 
 		strArgsResult = strings.ToLower(strArgsResult)
 	}else if(*bMorseToAlphabet == true){
+		fmt.Println(strArgs)
 		for _, argument := range strArgs {
 			strArgsResult += argument + " "
 		}
@@ -44,6 +45,8 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 		log.Fatal("Arguments is null !!!")
 		os.Exit(-1)
 	}
+
+	fmt.Println("strArgsResult======>" , strArgsResult)
 
 
 	return strArgsResult
@@ -59,6 +62,14 @@ func convertToByArgs(strWord string) string{
 				os.Exit(-1)
 			}
 			strMorseResult += morseData["wordsMorseUS"][strWord[idx:idx+1]].(string) + " "
+		}
+	}else if(*bMorseToAlphabet == true){
+		for idx := 0; idx < len(strWord); idx++ {
+			if(morseData["morseWordsUS"][strWord[idx:idx+1]] == nil){
+				log.Fatal("There are no matching words.")
+				os.Exit(-1)
+			}
+			strMorseResult += morseData["morseWordsUS"][strWord[idx:idx+1]].(string) + " "
 		}
 	}
 
