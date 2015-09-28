@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-var morseData map[string] interface{}
+var morseData map[string] map[string] interface{}
 
 var strFileName string
 
@@ -49,15 +49,17 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 	return strArgsResult
 }
 
-func convertToMorseByArgs(strWord string) string{
+func convertToByArgs(strWord string) string{
 	var strMorseResult string
 
-	for idx := 0; idx < len(strWord); idx++ {
-		if(morseData[strWord[idx:idx+1]] == nil){
-			log.Fatal("There are no matching words.")
-			os.Exit(-1)
+	if(*bAlphabetToMorse == true) {
+		for idx := 0; idx < len(strWord); idx++ {
+			if(morseData["wordsMorseUS"][strWord[idx:idx+1]] == nil){
+				log.Fatal("There are no matching words.")
+				os.Exit(-1)
+			}
+			strMorseResult += morseData["wordsMorseUS"][strWord[idx:idx+1]].(string) + " "
 		}
-		strMorseResult += morseData[strWord[idx:idx+1]].(string) + " "
 	}
 
 	return strMorseResult
@@ -88,7 +90,7 @@ func main() {
 	strFileName = "morseData.json"
 	readJsonFile(strFileName)
 
-	var strMorse = convertToMorseByArgs(strArgs)
+	var strMorse = convertToByArgs(strArgs)
 
 	fmt.Println(strMorse)
 }
