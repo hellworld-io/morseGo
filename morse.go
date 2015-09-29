@@ -15,8 +15,8 @@ var morseData map[string] map[string] interface{}
 var strFileName string
 
 var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words ex) -atm 'a b'")
-//var bKorToMorse = flag.Bool("ktm",false, "To need Kor words")
 var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet ex) -mta '. .-  . .-' ")
+//var bKorToMorse = flag.Bool("ktm",false, "To need Kor words")
 //var bMorseToKor = flag.Bool("mtk", false, "To need morse codes for Kor")
 
 func makeToStringByArgsAlphabet(strArgs []string) string {
@@ -75,7 +75,7 @@ func convertToByArgs(strWord string) string{
 }
 
 func readJsonFile(strFileName string) {
-	file, err := ioutil.ReadFile("./" + strFileName)
+	file, err := ioutil.ReadFile(strFileName)
 
 	if err != nil {
 		log.Fatal(err)
@@ -96,7 +96,7 @@ func main() {
 
 	strArgs = makeToStringByArgsAlphabet(flag.Args())
 
-	strFileName = "morseData.json"
+	strFileName = "./morseData.json"
 	readJsonFile(strFileName)
 
 	var strMorse = convertToByArgs(strArgs)
