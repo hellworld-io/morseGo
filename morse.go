@@ -24,7 +24,7 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 
 	if(*bAlphabetToMorse == true){
 		for _, argument := range strArgs {
-			strArgsResult += argument + " "
+			strArgsResult += argument
 		}
 
 		strArgsResult = strings.ToLower(strArgsResult)
