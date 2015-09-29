@@ -16,7 +16,7 @@ var strFileName string
 
 var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words ex) -atm ab cd")
 //var bKorToMorse = flag.Bool("ktm",false, "To need Kor words")
-var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet ex) -mta . .-  . .-")
+var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet ex) -mta '. .-  . .-' ")
 //var bMorseToKor = flag.Bool("mtk", false, "To need morse codes for Kor")
 
 func makeToStringByArgsAlphabet(strArgs []string) string {
@@ -24,17 +24,13 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 
 	if(*bAlphabetToMorse == true){
 		for _, argument := range strArgs {
-			if(argument == " "){
-				fmt.Println("space")
-			}
 			strArgsResult += argument + " "
 		}
 
 		strArgsResult = strings.ToLower(strArgsResult)
 	}else if(*bMorseToAlphabet == true){
 		for _, argument := range strArgs {
-			fmt.Println(argument)
-			strArgsResult += argument + " "
+			strArgsResult += argument
 		}
 	}else{
 		log.Fatal("Arguments error !!! no flag")
@@ -45,9 +41,6 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 		log.Fatal("Arguments is null !!!")
 		os.Exit(-1)
 	}
-
-	fmt.Println("strArgsResult======>" , strArgsResult)
-
 
 	return strArgsResult
 }
@@ -64,12 +57,17 @@ func convertToByArgs(strWord string) string{
 			strMorseResult += morseData["wordsMorseUS"][strWord[idx:idx+1]].(string) + " "
 		}
 	}else if(*bMorseToAlphabet == true){
-		for idx := 0; idx < len(strWord); idx++ {
-			if(morseData["morseWordsUS"][strWord[idx:idx+1]] == nil){
+		arrMorseWord := strings.Split(strWord," ")
+		for idx := 0; idx < len(arrMorseWord); idx++ {
+			if(arrMorseWord[idx] == ""){
+				arrMorseWord[idx] = " "
+			}
+
+			if(morseData["morseWordsUS"][arrMorseWord[idx]] == nil){
 				log.Fatal("There are no matching words.")
 				os.Exit(-1)
 			}
-			strMorseResult += morseData["morseWordsUS"][strWord[idx:idx+1]].(string) + " "
+			strMorseResult += morseData["morseWordsUS"][arrMorseWord[idx]].(string)
 		}
 	}
 
