@@ -17,12 +17,14 @@
 ./morseGo -h
 Usage of ./morseGo:
   -atm
-        To need Alphabet words ex) -atm ab cd
+        To need Alphabet words ex) -atm 'a b'
   -mta
-        To need morse codes for alphabet ex) -mta . .-  . .-
+        To need morse codes for alphabet ex) -mta '. .-  . .-'
 
 
-$ ./morseGo -atm a b
-.-   -...
+$ ./morseGo -atm "a b"
+.-  -...
 
+$ ./morseGo -mta ".-  -..."
+a b
 ```
