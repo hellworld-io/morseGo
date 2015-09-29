@@ -14,7 +14,7 @@ var morseData map[string] map[string] interface{}
 
 var strFileName string
 
-var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words ex) -atm ab cd")
+var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words ex) -atm 'a b'")
 //var bKorToMorse = flag.Bool("ktm",false, "To need Kor words")
 var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet ex) -mta '. .-  . .-' ")
 //var bMorseToKor = flag.Bool("mtk", false, "To need morse codes for Kor")
