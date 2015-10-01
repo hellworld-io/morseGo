@@ -28,18 +28,15 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 	}
 
 	if(*bAlphabetToMorse != true && *bMorseToAlphabet != true){
-		log.Fatal("option error !!! no flag")
+		log.Fatal("option error !!! no option")
 		os.Exit(-1)
 	}
 
-	/*
 	if(*bAlphabetToMorse == true && *bMorseToAlphabet == true){
 		log.Fatal("option error !!! double flag")
 		os.Exit(-1)
 	}
-	*/
 
-	fmt.Println("strArgs ", strArgs[0])
 	for _, argument := range strArgs {
 		strArgsResult += argument
 	}
@@ -98,8 +95,6 @@ func readJsonFile(strFileName string) {
 func main() {
 	flag.Parse()
 
-	fmt.Println("bAlphabetToMorse ", *bAlphabetToMorse)
-	fmt.Println("bMorseToAlphabet ", *bMorseToAlphabet)
 	var strArgs string
 
 	strArgs = makeToStringByArgsAlphabet(flag.Args())
