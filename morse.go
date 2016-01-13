@@ -83,7 +83,7 @@ func readJsonFile(strFileName string) {
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(-1)
-	}
+	}//
 
 	err = json.Unmarshal(file, &morseData)
 	if err != nil {
