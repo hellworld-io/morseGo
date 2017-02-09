@@ -22,17 +22,17 @@ var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet
 func makeToStringByArgsAlphabet(strArgs []string) string {
 	var strArgsResult string
 
-	if (len(strArgs) == 0){
+	if len(strArgs) == 0 {
 		log.Fatal("Arguments is null !!!")
 		os.Exit(-1)
 	}
 
-	if(*bAlphabetToMorse != true && *bMorseToAlphabet != true){
+	if *bAlphabetToMorse != true && *bMorseToAlphabet != true {
 		log.Fatal("option error !!! no option")
 		os.Exit(-1)
 	}
 
-	if(*bAlphabetToMorse == true && *bMorseToAlphabet == true){
+	if *bAlphabetToMorse == true && *bMorseToAlphabet == true{
 		log.Fatal("option error !!! double flag")
 		os.Exit(-1)
 	}
@@ -41,7 +41,7 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 		strArgsResult += argument
 	}
 
-	if(*bAlphabetToMorse == true){
+	if *bAlphabetToMorse == true {
 		strArgsResult = strings.ToLower(strArgsResult)
 	}
 
@@ -51,7 +51,7 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 func convertToByArgs(strWord string) string{
 	var strMorseResult string
 
-	if(*bAlphabetToMorse == true) {
+	if *bAlphabetToMorse == true {
 		for idx := 0; idx < len(strWord); idx++ {
 			if(morseData["wordsMorseUS"][strWord[idx:idx+1]] == nil){
 				log.Fatal("There are no matching words.")
@@ -59,14 +59,14 @@ func convertToByArgs(strWord string) string{
 			}
 			strMorseResult += morseData["wordsMorseUS"][strWord[idx:idx+1]].(string) + " "
 		}
-	}else if(*bMorseToAlphabet == true){
+	}else if *bMorseToAlphabet == true {
 		arrMorseWord := strings.Split(strWord," ")
 		for idx := 0; idx < len(arrMorseWord); idx++ {
-			if(arrMorseWord[idx] == ""){
+			if arrMorseWord[idx] == "" {
 				arrMorseWord[idx] = " "
 			}
 
-			if(morseData["morseWordsUS"][arrMorseWord[idx]] == nil){
+			if morseData["morseWordsUS"][arrMorseWord[idx]] == nil {
 				log.Fatal("There are no matching morse codes.")
 				os.Exit(-1)
 			}
