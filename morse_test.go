@@ -22,7 +22,7 @@ func TestParseToJsonData(t *testing.T){
 	//strMorseResult += morseData[strWord[idx:idx+1]].(string) + " "
 	morseUSCode := morseData["morseUS"]["c"]
 
-	if(morseUSCode == nil){
+	if morseUSCode == nil {
 		fmt.Println("nil")
 	}else{
 		fmt.Println(morseUSCode)
