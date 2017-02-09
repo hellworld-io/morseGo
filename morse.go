@@ -53,7 +53,7 @@ func convertToByArgs(strWord string) string{
 
 	if *bAlphabetToMorse == true {
 		for idx := 0; idx < len(strWord); idx++ {
-			if(morseData["wordsMorseUS"][strWord[idx:idx+1]] == nil){
+			if morseData["wordsMorseUS"][strWord[idx:idx+1]] == nil {
 				log.Fatal("There are no matching words.")
 				os.Exit(-1)
 			}
