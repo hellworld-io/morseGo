@@ -10,6 +10,7 @@ import (
 	"strings"
 )
 
+//[TODO] Will change struct type
 var morseData map[string] map[string] interface{}
 
 var strFileName string
