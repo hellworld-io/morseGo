@@ -92,6 +92,7 @@ func readJsonFile(strFileName string) {
 	}
 }
 
+//[TODO] Will refactor this sources
 func main() {
 	flag.Parse()
 
