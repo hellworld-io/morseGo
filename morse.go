@@ -2,12 +2,11 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"encoding/json"
 	"log"
 	"flag"
 	"os"
 	"strings"
+	"morseGo/jsonUtils"
 )
 
 //[TODO] Will change struct type
@@ -78,23 +77,14 @@ func convertToByArgs(strWord string) string{
 	return strMorseResult
 }
 
-func readJsonFile(strFileName string) {
-	file, err := ioutil.ReadFile(strFileName)
-
-	if err != nil {
-		log.Fatal(err)
-		os.Exit(-1)
-	}//
-
-	err = json.Unmarshal(file, &morseData)
-	if err != nil {
-		log.Fatal(err)
-		os.Exit(-1)
-	}
-}
-
 //[TODO] Will refactor this sources
 func main() {
+	//strFileName = "./morseData.json"
+	//morseJsonData := new(jsonUtils.MorseObject)
+	//morseJsonData.ReadJsonData(strFileName)
+
+	//fmt.Println(morseJsonData.Words["1"])
+
 	flag.Parse()
 
 	var strArgs string
@@ -102,9 +92,11 @@ func main() {
 	strArgs = makeToStringByArgsAlphabet(flag.Args())
 
 	strFileName = "./morseData.json"
-	readJsonFile(strFileName)
+	morseJsonData := new(jsonUtils.MorseObject)
+	morseJsonData.ReadJsonData(strFileName)
 
 	var strMorse = convertToByArgs(strArgs)
 
 	fmt.Println(strMorse)
+
 }
