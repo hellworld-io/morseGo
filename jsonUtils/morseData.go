@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 	"encoding/json"
-
 )
 
 type MorseObject struct{
@@ -13,18 +12,16 @@ type MorseObject struct{
 	Morse map[string]string
 }
 
-func ReadJsonData(strFileInfo string) {
+func (morseJson *MorseObject)ReadJsonData(strFileInfo string) {
 	file, err := ioutil.ReadFile(strFileInfo)
 
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(-1)
 	}
-	var jsonData MorseObject
 
-	err = json.Unmarshal(file, &jsonData)
+	err = json.Unmarshal(file, morseJson)
 
-	//fmt.Println(jsonData.Words)
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(-1)
