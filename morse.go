@@ -9,21 +9,17 @@ import (
 	"morseGo/jsonUtils"
 )
 
+const morseFileInfo string = "./morseData.json"
+const useInfo = "Usage: morse [command] [args]"
+
 //[TODO] Will change struct type
 var morseData map[string] map[string] interface{}
-
-var strFileName string
 
 var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words ex) -atm 'a b'")
 var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet ex) -mta '. .-  . .-' ")
 
 func makeToStringByArgsAlphabet(strArgs []string) string {
 	var strArgsResult string
-
-	if len(strArgs) == 0 {
-		log.Fatal("Arguments is null !!!")
-		os.Exit(-1)
-	}
 
 	if *bAlphabetToMorse != true && *bMorseToAlphabet != true {
 		log.Fatal("option error !!! no option")
@@ -75,7 +71,6 @@ func convertToByArgs(strWord string) string{
 	return strMorseResult
 }
 
-//[TODO] Will refactor this sources
 func main() {
 	//strFileName = "./morseData.json"
 	//morseJsonData := new(jsonUtils.MorseObject)
@@ -87,11 +82,15 @@ func main() {
 
 	var strArgs string
 
+	if flag.NArg() < 1 {
+		fmt.Println(useInfo)
+		os.Exit(-1)
+	}
+
 	strArgs = makeToStringByArgsAlphabet(flag.Args())
 
-	strFileName = "./morseData.json"
 	morseJsonData := new(jsonUtils.MorseObject)
-	morseJsonData.ReadJsonData(strFileName)
+	morseJsonData.ReadJsonData(morseFileInfo)
 	fmt.Println(morseJsonData.Words["1"])
 
 	var strMorse = convertToByArgs(strArgs)
