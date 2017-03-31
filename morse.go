@@ -1,19 +1,19 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
-	"flag"
+	"morseGo/jsonUtils"
 	"os"
 	"strings"
-	"morseGo/jsonUtils"
 )
 
 const morseFileInfo string = "./morseData.json"
 const useInfo = "Usage: morse [command] [args]"
 
 //[TODO] Will change struct type
-var morseData map[string] map[string] interface{}
+var morseData map[string]map[string]interface{}
 
 var bAlphabetToMorse = flag.Bool("atm", false, "To need Alphabet words ex) -atm 'a b'")
 var bMorseToAlphabet = flag.Bool("mta", false, "To need morse codes for alphabet ex) -mta '. .-  . .-' ")
@@ -26,7 +26,7 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 		os.Exit(-1)
 	}
 
-	if *bAlphabetToMorse == true && *bMorseToAlphabet == true{
+	if *bAlphabetToMorse == true && *bMorseToAlphabet == true {
 		log.Fatal("option error !!! double flag")
 		os.Exit(-1)
 	}
@@ -42,7 +42,7 @@ func makeToStringByArgsAlphabet(strArgs []string) string {
 	return strArgsResult
 }
 
-func convertToByArgs(strWord string) string{
+func convertToByArgs(strWord string) string {
 	var strMorseResult string
 
 	if *bAlphabetToMorse == true {
@@ -53,8 +53,8 @@ func convertToByArgs(strWord string) string{
 			}
 			strMorseResult += morseData["wordsMorseUS"][strWord[idx:idx+1]].(string) + " "
 		}
-	}else if *bMorseToAlphabet == true {
-		arrMorseWord := strings.Split(strWord," ")
+	} else if *bMorseToAlphabet == true {
+		arrMorseWord := strings.Split(strWord, " ")
 		for idx := 0; idx < len(arrMorseWord); idx++ {
 			if arrMorseWord[idx] == "" {
 				arrMorseWord[idx] = " "
@@ -71,6 +71,11 @@ func convertToByArgs(strWord string) string{
 	return strMorseResult
 }
 
+func morseUseage() {
+	fmt.Println(useInfo)
+	flag.PrintDefaults()
+}
+
 func main() {
 	//strFileName = "./morseData.json"
 	//morseJsonData := new(jsonUtils.MorseObject)
@@ -78,12 +83,14 @@ func main() {
 
 	//fmt.Println(morseJsonData.Words["1"])
 
+	flag.Usage = morseUseage
+
 	flag.Parse()
 
 	var strArgs string
 
 	if flag.NArg() < 1 {
-		fmt.Println(useInfo)
+		flag.Usage()
 		os.Exit(-1)
 	}
 
