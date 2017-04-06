@@ -10,17 +10,10 @@
 
 ### This is able to convert from words to morse code, or convert from morse code to words.
 ```
-./morseGo -h
-Usage of ./morseGo:
-  -atm
-        To need Alphabet words ex) -atm 'a b'
-  -mta
-        To need morse codes for alphabet ex) -mta '. .-  . .-'
-
-
-$ ./morseGo -atm "a b"
-.-  -...
-
-$ ./morseGo -mta ".-  -..."
-a b
+./morse
+Usage of morse:
+    convert -morse string
+        morse code to text ex) morse convert -morse '. .-  . .-'
+    convert -text string
+        Text to morse code ex) morse convert -text 'a b'
 ```
