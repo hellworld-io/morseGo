@@ -1,6 +1,6 @@
-# Morse Code Golang CLI
+# MorseGo
 
-### Simple little command line converting Morse Code written in Go
+### MorseGo is written  by golang. It is a Simple command line for converting Morse Code or text.
 
 ## What Morse Code?
 
