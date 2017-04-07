@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"encoding/json"
+	"strings"
 )
 
 type MorseJson struct{
@@ -12,7 +13,7 @@ type MorseJson struct{
 	Morse map[string]string
 }
 
-func (morseJson *MorseJson)ReadJsonData(strFileInfo string) {
+func (morseJson *MorseJson) ReadJsonData(strFileInfo string) {
 	file, err := ioutil.ReadFile(strFileInfo)
 
 	if err != nil {
@@ -26,5 +27,25 @@ func (morseJson *MorseJson)ReadJsonData(strFileInfo string) {
 		log.Fatal(err)
 		os.Exit(-1)
 	}
+}
+
+func (morseJson *MorseJson) Convert(textArg string, morseArg string) (convertedText string, convertedMorse string) {
+	for _, texts := range textArg {
+		if string(texts) != " " {
+			convertedMorse += morseJson.Words[string(texts)] + " "
+		} else {
+			convertedMorse += morseJson.Words[string(texts)]
+		}
+	}
+
+	eachMorseCode := strings.Split(morseArg," ")
+	for _, morsecodes := range eachMorseCode {
+		if morsecodes == "" {
+			convertedText += " "
+		}
+		convertedText += morseJson.Morse[string(morsecodes)]
+	}
+
+	return convertedText, convertedMorse
 }
 
