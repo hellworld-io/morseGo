@@ -17,3 +17,14 @@ Usage of morse:
     convert -text string
         Text to morse code ex) morse convert -text 'a b'
 ```
+
+### There are results about running morse.
+```
+go run morse.go convert -text 'abc d' -morse '.- -... -.-.  -..'
+
+
+converted text : .- -... -.-.  -..  
+converted morse code : abc d
+```
+
+

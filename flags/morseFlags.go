@@ -12,9 +12,6 @@ var (
 	convertCmd = flag.NewFlagSet("convert",flag.ExitOnError)
 	convertText = convertCmd.String("text","","Text to morse code ex) -text 'a b'")
 	convertMorse = convertCmd.String("morse","","morse code to text ex) -morse '. .-  . .-'")
-
-	TextArg string
-	MorseArg string
 )
 
 func MorseMessage() {
@@ -22,7 +19,7 @@ func MorseMessage() {
 	flag.PrintDefaults()
 }
 
-func SetFlags() {
+func SetFlags() (textArgs string, morseArg string){
 	flag.Usage = MorseMessage
 
 	if len(os.Args) < 2 {
@@ -43,7 +40,8 @@ func SetFlags() {
 			os.Exit(-1)
 		}
 
-		TextArg = strings.ToLower(*convertText)
-		MorseArg = *convertMorse
+		textArgs = strings.ToLower(*convertText)
+		morseArg = *convertMorse
 	}
+	return textArgs, morseArg
 }

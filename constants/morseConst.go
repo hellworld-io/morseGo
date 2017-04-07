@@ -1,7 +1,8 @@
 package constants
 
 const (
-	MorseDataFile string = "./morseData.json"
+	MorseDataFile string = "morseData.json"
+
 	MorseUsage string = `Usage of morse:
     convert -morse string
         morse code to text ex) morse convert -morse '. .-  . .-'
