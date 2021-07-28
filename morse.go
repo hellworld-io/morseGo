@@ -1,10 +1,10 @@
 package main
 
 import (
-	"morseGo/flags"
 	"fmt"
-	"morseGo/jsons"
 	"morseGo/constants"
+	"morseGo/flags"
+	"morseGo/jsons"
 	"path"
 )
 
@@ -17,5 +17,5 @@ func main() {
 
 	resultText, resultMorse := morseJson.Convert(textArgs, morseArgs)
 
-	fmt.Printf("converted text : %s \nconverted morse code : %s\n",resultMorse, resultText)
+	fmt.Printf("converted text : %s \nconverted morse code : %s\n", resultMorse, resultText)
 }
